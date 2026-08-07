@@ -1,0 +1,326 @@
+[
+  {
+    "id": "student-ambassador",
+    "title": "Student Ambassador Engagement Program",
+    "domain": "Education",
+    "problem": "Low student participation in entrepreneurship activities and extracurricular events.",
+    "description": "A peer-led ambassador network where students representing different departments promote and organize entrepreneurship workshops and events.",
+    "context": {
+      "population": 2000,
+      "budget": 200000,
+      "people": 20,
+      "duration": "6 months",
+      "infrastructure": ["dedicated incubator facilities", "seminar halls"]
+    },
+    "implementation": [
+      "Recruit student ambassadors representing each stream",
+      "Conduct weekly workshops and speaker sessions",
+      "Invite industry mentors for guest lectures",
+      "Run inter-department promotional campaigns"
+    ],
+    "successFactors": [
+      "Peer-to-peer influence and word-of-mouth marketing",
+      "Regular and consistent event calendar",
+      "Department-level representation",
+      "Access to professional network and guest mentors"
+    ],
+    "outcome": "Student participation in entrepreneurship events increased by 150%, and 12 student startups were initiated.",
+    "evidenceLevel": "Prototype Case",
+    "risks": [
+      "High ambassador turnover",
+      "High cost of hosting physical guest mentors",
+      "Low attendance if sessions conflict with exams"
+    ]
+  },
+  {
+    "id": "peer-tutoring",
+    "title": "Peer-to-Peer Academic Mentorship Scheme",
+    "domain": "Education",
+    "problem": "High failure rate and low academic performance in first-year foundation courses.",
+    "description": "A structured program where trained senior students conduct weekly group review and study sessions for struggling juniors.",
+    "context": {
+      "population": 1000,
+      "budget": 100000,
+      "people": 15,
+      "duration": "4 months",
+      "infrastructure": ["classroom spaces", "study guides"]
+    },
+    "implementation": [
+      "Select high-performing senior students as tutors",
+      "Conduct pedagogical and communication training for tutors",
+      "Match tutors with first-year student groups",
+      "Hold weekly structured study and review sessions",
+      "Provide custom study packets and worksheets"
+    ],
+    "successFactors": [
+      "Relatable peer mentors reducing performance anxiety",
+      "Small group sizes facilitating collaborative learning",
+      "Structured and verified tutoring materials aligned with courses",
+      "Tutor rewards like academic credit or recognition"
+    ],
+    "outcome": "Course failure rate decreased by 40% and overall student engagement increased.",
+    "evidenceLevel": "Prototype Case",
+    "risks": [
+      "Inconsistent tutoring quality across groups",
+      "Volunteer tutor fatigue in later weeks of the semester"
+    ]
+  },
+  {
+    "id": "coding-club",
+    "title": "Open-Source Coding Club Initiative",
+    "domain": "Education",
+    "problem": "Lack of practical programming skills and collaborative software development experience among students.",
+    "description": "A student-led software development community focused on building open-source projects, peer review, and coding bootcamps.",
+    "context": {
+      "population": 500,
+      "budget": 30000,
+      "people": 5,
+      "duration": "3 months",
+      "infrastructure": ["computer labs", "high-speed internet"]
+    },
+    "implementation": [
+      "Establish a student-run core committee for the club",
+      "Conduct weekly hands-on coding bootcamps on web technologies",
+      "Set up collaborative repositories on GitHub",
+      "Organize weekend mini-hackathons with local industry judges",
+      "Provide online forums (Discord/Slack) for active support"
+    ],
+    "successFactors": [
+      "Hands-on project-based learning model",
+      "Active asynchronous support from senior students",
+      "External validation through hackathon judges",
+      "Open-source contribution as a tangible career outcome"
+    ],
+    "outcome": "Club grew to 150 active members who collaboratively deployed 20 community open-source projects.",
+    "evidenceLevel": "Prototype Case",
+    "risks": [
+      "Frustration among absolute beginners due to fast-paced training",
+      "Server and hosting fees if projects scale rapidly"
+    ]
+  },
+  {
+    "id": "decentralized-composting",
+    "title": "Decentralized Community Composting Program",
+    "domain": "Community Development",
+    "problem": "Large volume of wet food waste discarded into municipal landfills, causing greenhouse emissions and poor hygiene.",
+    "description": "A decentralized solid waste treatment system where local community members segregate and compost organic waste inside local parks.",
+    "context": {
+      "population": 5000,
+      "budget": 300000,
+      "people": 25,
+      "duration": "12 months",
+      "infrastructure": ["municipal park space", "waste segregation bins", "compost aerators"]
+    },
+    "implementation": [
+      "Distribute segregated bins and educational leaflets to households",
+      "Construct aerated concrete composting bays in neighborhood parks",
+      "Train community volunteers to inspect and dump waste daily",
+      "Harvest, screen, and distribute finished organic compost to donors"
+    ],
+    "successFactors": [
+      "Strong household compliance with waste segregation",
+      "Consistent educational door-to-door visits by volunteer advocates",
+      "Economic benefit of receiving free organic fertilizer",
+      "Proper mechanical aeration preventing foul odors"
+    ],
+    "outcome": "Diverted 60% of household organic waste from landfills, producing 5 tons of nutrient-rich compost.",
+    "evidenceLevel": "Prototype Case",
+    "risks": [
+      "Contamination of compost by plastics or chemicals",
+      "Initial complaints from residents regarding potential odor or pests"
+    ]
+  },
+  {
+    "id": "local-business-digital",
+    "title": "Local Merchant Digital Onboarding Project",
+    "domain": "Business",
+    "problem": "Traditional neighborhood merchants losing market share to major online e-commerce platforms.",
+    "description": "A digital training and enablement drive helping local micro-merchants set up online visibility, digital payments, and local logistics.",
+    "context": {
+      "population": 150,
+      "budget": 150000,
+      "people": 8,
+      "duration": "5 months",
+      "infrastructure": ["local training hall", "stable internet", "smartphones"]
+    },
+    "implementation": [
+      "Map and survey local storefronts to assess digital readiness",
+      "Conduct hands-on digital literacy bootcamps for merchants",
+      "Verify and set up Google Business and Google Map listings",
+      "Implement instant digital payments (UPI and QR Codes)",
+      "Train merchants on hyper-local delivery apps and catalogs"
+    ],
+    "successFactors": [
+      "Face-to-face personalized support in the merchant's shop",
+      "Simplified visual guides written in local languages",
+      "Immediate convenience and safety of direct UPI payment setup",
+      "Local community-led marketing campaigns"
+    ],
+    "outcome": "Onboarded 85 local businesses, reporting an average of 20% growth in monthly sales and footfall.",
+    "evidenceLevel": "Prototype Case",
+    "risks": [
+      "High dropout rates of shopkeepers during multi-session training",
+      "Technical glitches in digital payment apps causing distrust"
+    ]
+  },
+  {
+    "id": "hybrid-learning",
+    "title": "Offline-First Hybrid Learning Infrastructure",
+    "domain": "Education",
+    "problem": "Poor educational outcomes in rural schools due to a lack of learning resources and qualified teachers.",
+    "description": "A smart classroom package containing digital TVs and offline preloaded educational software powered by local solar backup.",
+    "context": {
+      "population": 1200,
+      "budget": 500000,
+      "people": 12,
+      "duration": "8 months",
+      "infrastructure": ["rural school classrooms", "solar panels", "smart televisions"]
+    },
+    "implementation": [
+      "Install low-power digital smart televisions in rural schools",
+      "Provide micro-SD cards loaded with interactive animated curricula",
+      "Train local teachers in managing hybrid digital-physical lessons",
+      "Install solar PV panels and battery storage to avoid blackouts"
+    ],
+    "successFactors": [
+      "Offline-first system needing no internet during classroom hours",
+      "Highly interactive visual curriculum that maintains child attention",
+      "Independent solar power setup overcoming local load shedding",
+      "Simple one-button remote control interfaces for teacher ease"
+    ],
+    "outcome": "Student attendance rate grew by 35% and comprehension scores in science/math rose by 25%.",
+    "evidenceLevel": "Prototype Case",
+    "risks": [
+      "Lack of local technical skills to repair broken hardware",
+      "Battery degradation due to extreme summer heat"
+    ]
+  },
+  {
+    "id": "volunteer-library",
+    "title": "Community-Led Neighborhood Library Network",
+    "domain": "Community Development",
+    "problem": "Lack of books, reading culture, and constructive learning environments for children in low-income zones.",
+    "description": "A decentralized library program using donated books, volunteer-run library corners, and weekly children's circles.",
+    "context": {
+      "population": 3000,
+      "budget": 80000,
+      "people": 18,
+      "duration": "6 months",
+      "infrastructure": ["shared community rooms", "wooden bookshelves", "donated books"]
+    },
+    "implementation": [
+      "Launch public book donation campaigns across neighboring cities",
+      "Rent or borrow small corners in community halls or homes",
+      "Train local youth volunteers in book cataloging and tracking",
+      "Organize weekly reading circles, storytelling, and drawing activities"
+    ],
+    "successFactors": [
+      "Zero book procurement cost due to community donations",
+      "Walking-distance proximity of reading spots to homes",
+      "Youth volunteers who double as role models for younger children",
+      "Interactive events making the library a social space"
+    ],
+    "outcome": "Established 5 active reading hubs with over 2000 books, serving 300+ children weekly.",
+    "evidenceLevel": "Prototype Case",
+    "risks": [
+      "Loss, theft, or wear and tear of popular books",
+      "Decline in volunteer attendance once schools reopen"
+    ]
+  },
+  {
+    "id": "smart-classroom",
+    "title": "Affordable Projector-Based Smart Classrooms",
+    "domain": "Education",
+    "problem": "Abstract concepts in STEM subjects are difficult to explain using only chalk and textbooks, leading to disengagement.",
+    "description": "Equipping classrooms with portable low-cost LED projectors and preloaded digital content folders to visual-aid regular teaching.",
+    "context": {
+      "population": 800,
+      "budget": 120000,
+      "people": 6,
+      "duration": "3 months",
+      "infrastructure": ["classrooms", "power sockets", "whitewashed wall surfaces"]
+    },
+    "implementation": [
+      "Procure lightweight, low-cost LED projectors with USB ports",
+      "Compile curriculum-aligned animation and diagram libraries",
+      "Conduct short, practical training workshops for teaching staff",
+      "Set up a projector checkout and scheduling sheet in the staff room"
+    ],
+    "successFactors": [
+      "Highly affordable hardware package",
+      "Teacher control over curriculum pacing (not replacing the teacher)",
+      "Use of simple white walls instead of buying specialized screens",
+      "No internet dependency as content is stored on USB drives"
+    ],
+    "outcome": "Science and math test scores improved by 22%, with 90% of teachers regularly using visual aids.",
+    "evidenceLevel": "Prototype Case",
+    "risks": [
+      "Projector bulb burnouts with high replacement lead times",
+      "Ambient daylight washing out projections in bright rooms"
+    ]
+  },
+  {
+    "id": "micro-scholarships",
+    "title": "Direct Micro-Scholarship Student Retention Plan",
+    "domain": "Education",
+    "problem": "Vulnerable students dropping out during the transition to higher secondary classes due to small household financial shocks.",
+    "description": "Providing small, conditional, digital cash transfers directly to students combined with parent counseling to prevent school dropouts.",
+    "context": {
+      "population": 300,
+      "budget": 400000,
+      "people": 4,
+      "duration": "12 months",
+      "infrastructure": ["administrative office", "student bank accounts", "biometric attendance loggers"]
+    },
+    "implementation": [
+      "Analyze attendance records to locate high-risk dropout candidates",
+      "Establish conditional monthly transfers (₹1,000) directly to students",
+      "Conduct mandatory parent counseling sessions regarding the value of education",
+      "Monitor bi-weekly school attendance to release subsequent payments"
+    ],
+    "successFactors": [
+      "Direct bank transfers eliminating distribution overhead and leakage",
+      "Conditional nature (minimum 80% attendance) ensuring compliance",
+      "Active parent engagement to change home support dynamics",
+      "Targeted focus on the most vulnerable cohort rather than blanket awards"
+    ],
+    "outcome": "Reduced high school dropouts by 70%, with a 95% retention rate in the target student group.",
+    "evidenceLevel": "Prototype Case",
+    "risks": [
+      "Difficulties in setting up accounts for students without documents",
+      "Potential community backlash for targeting only specific students"
+    ]
+  },
+  {
+    "id": "mobile-health",
+    "title": "Mobile Diagnostic Health Camps",
+    "domain": "NGO",
+    "problem": "Lack of access to basic preventive healthcare, clinical diagnostics, and early treatment in remote, underserved villages.",
+    "description": "A scheduled mobile medical camp utilizing vans, portable checkup kits, and visiting doctor teams to deliver rural healthcare.",
+    "context": {
+      "population": 6000,
+      "budget": 600000,
+      "people": 30,
+      "duration": "9 months",
+      "infrastructure": ["mobile checkup vans", "portable testing kits", "village council rooms"]
+    },
+    "implementation": [
+      "Equip utility vans with basic diagnostic gears and medicines",
+      "Collaborate with rural village councils to publicize camp dates",
+      "Deploy visiting doctors, nurses, and local organizers on weekends",
+      "Provide immediate screening, free basic prescriptions, and medical referrals"
+    ],
+    "successFactors": [
+      "Formal trust endorsement by village heads and community leaders",
+      "A predictable, regular visit schedule built into community calendars",
+      "Providing immediate remedies (free basic medicines) on-site",
+      "Dedicated referral slips with pre-negotiated city hospital routes"
+    ],
+    "outcome": "Screened 4,500 rural citizens, identifying and referring 600 cases of severe hypertension, diabetes, and visual impairments.",
+    "evidenceLevel": "Prototype Case",
+    "risks": [
+      "Inaccessible dirt roads during heavy monsoon floods",
+      "Rising cost of clinical consumables and vehicle fuel"
+    ]
+  }
+]

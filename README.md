@@ -1,6 +1,6 @@
 # Context-Aware Adaptation of Proven Solutions
 
-> **Developed by Team KAIRO**  
+> **Developed by Team V'ECTOR**
 > *"Proven There → Adapted for Here"*  
 > Academic Mini-Project Demonstration Platform
 

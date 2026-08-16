@@ -119,6 +119,7 @@ function App() {
     });
 
     setWizardStep(3); // jump directly to review profile for speed and clarity
+    setCurrentPage('new-analysis');
   };
 
   // Submits the problem and context to Express backend
@@ -301,7 +302,7 @@ function App() {
     actionPlan.expectedOutcomes.forEach(r => {
       mdContent += `- ${r}\n`;
     });
-    mdContent += `\n\n---\n*Developed by Team KAIRO — Context-Aware Adaptation Platform*`;
+    mdContent += `\n\n---\n*Developed by Team V'ECTOR — Context-Aware Adaptation Platform*`;
 
     const blob = new Blob([mdContent], { type: 'text/markdown;charset=utf-8;' });
     const url = URL.createObjectURL(blob);
@@ -337,7 +338,7 @@ function App() {
               </div>
               <div>
                 <span className="text-xl font-bold text-brand-navy">Context-Aware Adaptation</span>
-                <p className="text-[10px] text-slate-500 font-medium tracking-wide">DEVELOPED BY TEAM KAIRO</p>
+                <p className="text-[10px] text-slate-500 font-medium tracking-wide">DEVELOPED BY TEAM V'ECTOR</p>
               </div>
             </div>
 
@@ -510,7 +511,7 @@ function App() {
 
             {/* Developed by attribution */}
             <div className="text-center pt-8 text-xs text-slate-400">
-              Developed by Team KAIRO &bull; Academic Mini-Project Demonstration
+              Developed by Team V'ECTOR &bull; Academic Mini-Project Demonstration
             </div>
           </div>
         )}
@@ -1650,7 +1651,7 @@ function App() {
 
                 {/* Print bottom footer notice */}
                 <div className="hidden print:block text-center text-xs text-slate-400 pt-8 border-t border-slate-200">
-                  Developed by Team KAIRO &bull; Context-Aware Adaptation Report &bull; Page Break
+                  Developed by Team V'ECTOR &bull; Context-Aware Adaptation Report &bull; Page Break
                 </div>
 
                 {/* Reset analysis CTA */}
@@ -1923,11 +1924,12 @@ function App() {
             {/* Team details */}
             <div className="bg-slate-50 border border-slate-200 p-6 rounded-2xl text-center space-y-2">
               <h4 className="text-sm font-bold text-brand-navy">Project Execution Details</h4>
-              <p className="text-xs text-slate-600">Developed for College Mini-Project Demonstration requirements.</p>
-              <div className="pt-2 flex justify-center space-x-6 text-xs text-slate-500">
-                <div><span className="font-semibold text-brand-navy">Team Name:</span> Team KAIRO</div>
-                <div><span className="font-semibold text-brand-navy">Frameworks:</span> Express.js + React (Vite) + Tailwind</div>
-                <div><span className="font-semibold text-brand-navy">AI:</span> Gemini (optional API setup)</div>
+              <p className="text-xs text-slate-600">A context-aware platform for adapting proven solutions to real-world constraints.</p>
+              <div className="pt-2 flex flex-wrap justify-center gap-x-6 gap-y-2 text-xs text-slate-500">
+                <div><span className="font-semibold text-brand-navy">Project:</span> Context-Aware Adaptation</div>
+                <div><span className="font-semibold text-brand-navy">Team:</span> V'ECTOR</div>
+                <div><span className="font-semibold text-brand-navy">Technology:</span> React + Vite + Tailwind CSS + Express.js</div>
+                <div><span className="font-semibold text-brand-navy">AI:</span> Google Gemini + Deterministic Fallback Engine</div>
               </div>
             </div>
 
@@ -1940,7 +1942,7 @@ function App() {
       <footer className="bg-white border-t border-slate-200 py-6 mt-12 no-print text-center text-xs text-slate-500">
         <div className="max-w-7xl mx-auto px-4">
           <p className="font-semibold text-brand-navy">Context-Aware Adaptation of Proven Solutions</p>
-          <p className="text-[10px] text-slate-400 mt-1">Developed by Team KAIRO &bull; &copy; {new Date().getFullYear()} &bull; Academic Prototype Case Study</p>
+          <p className="text-[10px] text-slate-400 mt-1">Developed by Team V'ECTOR &bull; 2026</p>
         </div>
       </footer>
     </div>

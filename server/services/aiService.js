@@ -19,7 +19,14 @@ if (apiKey && apiKey.trim() !== '') {
  * Perform adaptation analysis using Gemini AI.
  * Falls back to null if AI is not configured or fails.
  */
-export async function analyzeWithGemini(problemInfo, contextInfo, matchedSolution, comparisonGrid) {
+export async function analyzeWithGemini(
+  problemInfo,
+  contextInfo,
+  matchedSolution,
+  comparisonGrid,
+  deterministicAdaptation,
+  deterministicActionPlan
+) {
   if (!genAI) {
     return null;
   }
@@ -57,23 +64,32 @@ User's Target Context:
 - Major Constraints: ${contextInfo.constraints ? (Array.isArray(contextInfo.constraints) ? contextInfo.constraints.join(', ') : contextInfo.constraints) : 'None'}
 - Goals: ${contextInfo.goal || contextInfo.goals || 'None'}
 
-Context Gaps Analysis Comparison:
+Context Gaps Analysis Comparison (Calculated Deterministically):
 ${JSON.stringify(comparisonGrid, null, 2)}
 
+Baseline Deterministic Adaptation Rules:
+${JSON.stringify(deterministicAdaptation, null, 2)}
+
+Baseline Deterministic Action Plan:
+${JSON.stringify(deterministicActionPlan, null, 2)}
+
 Instructions:
-1. Evaluate why the case matches the problem. Give 2 to 3 concise, convincing prototype match reasons.
-2. Formulate Adaptation Decisions:
+1. Provide a detailed match reasoning explaining why the proven solution is a good fit for the user's problem. Focus on underlying principles.
+2. Identify contextual differences, resource limits, and operational gaps that may not be captured by simple numeric rules. These are "contextInsights".
+3. Formulate AI-adapted Adaptation Decisions inside the categories (RETAIN, MODIFY, AVOID, ADD) matching the structure of the baseline adaptation rules. Enhance the "reason" field for each item using deep contextual knowledge, and adapt the description details to fit the target constraints (e.g. how to adapt workshops or volunteers).
    - RETAIN: Core success factors / principles that should be preserved.
-   - MODIFY: Operational changes to original case steps due to target resource differences (specifically budget cuts, personnel limits, or compressed timeline).
+   - MODIFY: Operational changes to original case steps due to target resource differences (budget cuts, personnel limits, or compressed timeline).
    - AVOID: Expensive, high-resource, or high-overhead items that the target context cannot support or does not need.
    - ADD: Digital tools, tracking methods, local adaptations, or resource-sharing tactics needed to address constraints or higher scales in the target context.
-3. Build an Action Plan (Timeline Roadmap) split into 3 logical phases: Phase 1 (Setup), Phase 2 (Execution/Engagement), and Phase 3 (Evaluation/Review). Use appropriate timing based on the target duration.
-4. Formulate expected outcomes, risks, and required resources based on constraints.
+4. Formulate implementation insights for the final action plan.
+5. Create Phase Tasks for the 3 logical phases (Phase 1: Setup, Phase 2: Operational Execution, Phase 3: Review & Evaluation) corresponding to the timeline duration. Keep the phase structure, titles, and durations aligned with the baseline action plan, but enrich the specific tasks using AI reasoning.
+6. Provide resources required, risks, and expected impact (outcomes) tailored to the target context.
 
 Respond ONLY with a valid JSON object matching this schema:
 {
-  "matchReasons": ["Reason 1", "Reason 2"],
-  "adaptation": {
+  "matchReasoning": "A paragraph explaining why the proven solution is a good match for the user's problem, focusing on underlying principles.",
+  "contextInsights": ["Insight 1 on contextual differences", "Insight 2 on contextual differences"],
+  "adaptationReasoning": {
     "retain": [
       { "item": "Core element to retain", "reason": "Explanation why this core success factor works" }
     ],
@@ -87,36 +103,93 @@ Respond ONLY with a valid JSON object matching this schema:
       { "item": "New item to add", "reason": "Reason why this new item is necessary under target constraints" }
     ]
   },
-  "actionPlan": {
-    "strategyName": "The custom adapted strategy title",
-    "phases": [
-      {
-        "title": "PHASE 1 — SETUP",
-        "duration": "E.g. Week 1",
-        "tasks": ["Task 1", "Task 2"]
-      },
-      {
-        "title": "PHASE 2 — ENGAGEMENT",
-        "duration": "E.g. Weeks 2-6",
-        "tasks": ["Task 1", "Task 2"]
-      },
-      {
-        "title": "PHASE 3 — EVALUATION",
-        "duration": "E.g. Weeks 7-8",
-        "tasks": ["Task 1", "Task 2"]
-      }
-    ],
-    "resourcesRequired": ["Resource 1", "Resource 2"],
-    "risks": ["Risk 1", "Risk 2"],
-    "expectedOutcomes": ["Outcome 1", "Outcome 2"]
-  }
+  "implementationInsights": ["Implementation advice/insight 1", "Implementation advice/insight 2"],
+  "strategyName": "The custom adapted strategy title",
+  "phase1Tasks": ["Setup task 1", "Setup task 2"],
+  "phase2Tasks": ["Execution task 1", "Execution task 2"],
+  "phase3Tasks": ["Evaluation task 1", "Evaluation task 2"],
+  "resourcesRequired": ["Resource 1", "Resource 2"],
+  "risks": ["Risk 1", "Risk 2"],
+  "expectedImpact": ["Impact 1", "Impact 2"]
 }
 `;
 
     const result = await model.generateContent(prompt);
     const text = result.response.text();
     const parsedData = JSON.parse(text);
-    return parsedData;
+
+    // Helpers to validate arrays
+    const safeArray = (arr, fallback) => (Array.isArray(arr) && arr.length > 0 ? arr : fallback);
+
+    const safeAdaptationArray = (arr, fallback) => {
+      if (!Array.isArray(arr) || arr.length === 0) return fallback;
+      return arr.map(item => ({
+        item: String(item.item || item.original || ''),
+        reason: String(item.reason || '')
+      }));
+    };
+
+    const safeModifyArray = (arr, fallback) => {
+      if (!Array.isArray(arr) || arr.length === 0) return fallback;
+      return arr.map(item => ({
+        original: String(item.original || ''),
+        adapted: String(item.adapted || ''),
+        reason: String(item.reason || '')
+      }));
+    };
+
+    const adaptation = {
+      retain: safeAdaptationArray(parsedData.adaptationReasoning?.retain, deterministicAdaptation.retain),
+      modify: safeModifyArray(parsedData.adaptationReasoning?.modify, deterministicAdaptation.modify),
+      avoid: safeAdaptationArray(parsedData.adaptationReasoning?.avoid, deterministicAdaptation.avoid),
+      add: safeAdaptationArray(parsedData.adaptationReasoning?.add, deterministicAdaptation.add)
+    };
+
+    const actionPlan = {
+      strategyName: String(parsedData.strategyName || deterministicActionPlan.strategyName),
+      phases: [
+        {
+          title: deterministicActionPlan.phases[0].title,
+          duration: deterministicActionPlan.phases[0].duration,
+          tasks: safeArray(parsedData.phase1Tasks, deterministicActionPlan.phases[0].tasks)
+        },
+        {
+          title: deterministicActionPlan.phases[1].title,
+          duration: deterministicActionPlan.phases[1].duration,
+          tasks: safeArray(parsedData.phase2Tasks, deterministicActionPlan.phases[1].tasks)
+        },
+        {
+          title: deterministicActionPlan.phases[2].title,
+          duration: deterministicActionPlan.phases[2].duration,
+          tasks: safeArray(parsedData.phase3Tasks, deterministicActionPlan.phases[2].tasks)
+        }
+      ],
+      resourcesRequired: safeArray(parsedData.resourcesRequired, deterministicActionPlan.resourcesRequired),
+      risks: safeArray(parsedData.risks, deterministicActionPlan.risks),
+      expectedOutcomes: safeArray(parsedData.expectedImpact, deterministicActionPlan.expectedOutcomes)
+    };
+
+    // Combine matchReasoning and contextInsights into matchReasons for the client
+    const matchReasons = [];
+    if (parsedData.matchReasoning) {
+      matchReasons.push(String(parsedData.matchReasoning));
+    }
+    if (Array.isArray(parsedData.contextInsights)) {
+      parsedData.contextInsights.forEach(insight => {
+        if (insight) matchReasons.push(String(insight));
+      });
+    }
+
+    const finalMatchReasons = matchReasons.length > 0 ? matchReasons : [
+      `Direct domain match in '${matchedSolution.domain}'.`,
+      `Addresses similar challenge elements.`
+    ];
+
+    return {
+      adaptation,
+      actionPlan,
+      matchReasons: finalMatchReasons
+    };
 
   } catch (error) {
     console.error('[AI Service] Gemini analysis failed. Falling back to rule-based logic:', error);

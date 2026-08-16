@@ -88,12 +88,23 @@ app.post('/api/analyze', async (req, res) => {
     // B. Perform context gap comparison (always run locally for data precision)
     const contextComparison = compareContexts(selectedSolution.context, context);
 
+    // Pre-calculate deterministic fallback baselines
+    const deterministicAdaptation = adaptSolution(selectedSolution, contextComparison, context);
+    const deterministicActionPlan = generateActionPlan(selectedSolution, deterministicAdaptation, context);
+
     let adaptation = null;
     let actionPlan = null;
     let isAIUsed = false;
 
     // C. Try Gemini API if key is present
-    const geminiResult = await analyzeWithGemini(problem, context, selectedSolution, contextComparison);
+    const geminiResult = await analyzeWithGemini(
+      problem,
+      context,
+      selectedSolution,
+      contextComparison,
+      deterministicAdaptation,
+      deterministicActionPlan
+    );
 
     if (geminiResult) {
       adaptation = geminiResult.adaptation;
@@ -105,8 +116,8 @@ app.post('/api/analyze', async (req, res) => {
       console.log('[API] Successfully processed analysis using Gemini.');
     } else {
       // D. Fallback to local rule engines
-      adaptation = adaptSolution(selectedSolution, contextComparison, context);
-      actionPlan = generateActionPlan(selectedSolution, adaptation, context);
+      adaptation = deterministicAdaptation;
+      actionPlan = deterministicActionPlan;
       console.log('[API] Handled request using local deterministic rule engines.');
     }
 
